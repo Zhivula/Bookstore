@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bookstore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +9,31 @@ namespace Bookstore.Controllers
 {
     public class HomeController : Controller
     {
+        BookContext db = new BookContext();
+
         public ActionResult Index()
         {
-            return View();
-        }
+            IEnumerable<Book> books = db.Books;
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Books = books;
 
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpGet]
+        public ActionResult Buy(int id)
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.BoodId = id;
             return View();
+        }
+
+        [HttpPost]
+        public string Buy(Purchase purchase)
+        {
+            purchase.Date = DateTime.Now;
+            db.Purchases.Add(purchase);
+            db.SaveChanges();
+            return "Спасибо, " + purchase.Person + ", за покупку!";
         }
     }
 }
