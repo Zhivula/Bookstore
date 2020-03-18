@@ -12,17 +12,17 @@ namespace Bookstore.Controllers
     {
         public ActionResult Index()
         {
+            Session["This"] = "this";
             return View();
-        }
-        [HttpPost]
-        public string E(int i=10)
-        {
-            return "This is your number"+i;
-        }
+        }  
 
-        [HttpGet]
+        public ActionResult Check()
+        {
+            return new HttpStatusCodeResult(404);
+        }
         public ActionResult E()
         {
+            ViewBag.IP = HttpContext.Request.UserHostAddress;
             return View();
         }
         public ActionResult GetHtml()
@@ -33,6 +33,24 @@ namespace Bookstore.Controllers
         {
             string path = "../Image/imgh.jpg";
             return new ImageResult(path);
+        }
+        public string ContextData()
+        {
+            HttpContext.Response.Write("<h2>Здарова))))</h2>");
+
+            string userIP = HttpContext.Request.UserHostAddress;
+            string url = HttpContext.Request.RawUrl;
+            string userAgent = HttpContext.Request.UserAgent;
+
+            return "<p>userAgent: "+userAgent +"</p>"+
+                "<p>userIP: " + userIP + "</p>"+
+                "<p>url: " + url + "</p>"; 
+        }
+        public ActionResult Cookies()
+        {
+            HttpContext.Response.Cookies["id"].Value = "10";
+            ViewBag.id = HttpContext.Request.Cookies["id"].Value;
+            return View();
         }
     }
 }
