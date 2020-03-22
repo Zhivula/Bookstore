@@ -17,7 +17,7 @@ namespace Bookstore.Controllers
 
             ViewBag.Books = books;
 
-            return View();
+            return View(db.Books);
         }
 
         [HttpGet]
