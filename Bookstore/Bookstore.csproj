@@ -132,6 +132,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FirstHelper.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookContext.cs" />
     <Compile Include="Models\BookDbInitializer.cs" />
@@ -141,6 +143,10 @@
     <Compile Include="Util\ImageResult.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\BookstoreMain.mdf" />
+    <Content Include="App_Data\BookstoreMain_log.ldf">
+      <DependentUpon>BookstoreMain.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -149,9 +155,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\Bitcoin.jpg" />
     <Content Include="Image\imgh.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Code\MyHelpers.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -177,10 +185,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Buy.cshtml" />
     <Content Include="Views\My\E.cshtml" />
+    <Content Include="Views\Home\EditBook.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

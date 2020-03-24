@@ -1,4 +1,5 @@
 ﻿@using Bookstore.Models
+@using Bookstore.Helpers
 @model IEnumerable<Book>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,13 +18,20 @@
         </tr>
         @foreach (Book b in Model)
         {
-            <tr>
-                <td><p>@b.Name</p></td>
-                <td><p>@b.Author</p></td>
-                <td><p>@b.Price</p></td>
-                <td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>
-            </tr>
+        <tr>
+            <td><p>@b.Name</p></td>
+            <td><p>@b.Author</p></td>
+            <td><p>@b.Price</p></td>
+            <td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>
+            <td><p><a href="/Home/EditBook/@b.Id">Внести изменения</a></p></td>
+        </tr>
         }
     </table>
+    <h4>Псс, может ты желаешь отправиться в одни из этих городов?</h4>
+    @{ 
+        var cities = new string[] { "Лондон", "Париж", "Берлин" };
+    }
+    @Html.CreateList(cities)
+    @Html.Image("/Image/Bitcoin.jpg","Биткоин");
     @section Footer{}
 </div>
